@@ -20,50 +20,50 @@ const productSchema = new mongoose.Schema({
         default: 0,
     },
     image:[{
-					public_id:{
-							type: String,
-							required: true,
-					},
-					url:{
-							type: String,
-							required: true,
-					}
-        }
-      ],
-			category:{
+			public_id:{
 				type: String,
-				required: [true, "Please enter the product category."]
+				required: true,
 			},
-			stock:{
+			url:{
+				type: String,
+				required: true,
+			}
+        }
+     	],
+		category:{
+			type: String,
+		required: [true, "Please enter the product category."]
+		},
+		stock:{
+			type: Number,
+			required: [true, "Please enter the product stock.."],
+			maxLength: [5, "stock can not exceed 5 digit."],
+			default: 1,
+		},
+		numberOfReviews:{
+			type: Number,
+			default: 0,
+		},
+		reviews:[
+			{
+			name:{
+				type: String,
+				required: true,
+			},
+			rating:{
 				type: Number,
-				required: [true, "Please enter the product stock.."],
-				maxLength: [5, "stock can not exceed 5 digit."],
-				default: 1,
+				required: true,
 			},
-			numberOfReviews:{
-				type: Number,
-				default: 0,
-			},
-			reviews:[
-				{
-					name:{
-						type: String,
-						required: true,
-					},
-					rating:{
-						type: Number,
-						required: true,
-					},
-					comment:{
-						type: String,
-						required: true,
-					}
-				}
-		],
-		createdAt:{
-			type: Date,
-			default: Date.now,
-		}
+			comment:{
+				type: String,
+				required: true,
+			}
+			}
+	],
+	createdAt:{
+		type: Date,
+		default: Date.now,
+	}
 });
 
 
